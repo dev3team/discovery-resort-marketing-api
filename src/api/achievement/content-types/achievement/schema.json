@@ -1,10 +1,10 @@
 {
-  "kind": "singleType",
-  "collectionName": "companies",
+  "kind": "collectionType",
+  "collectionName": "achievements",
   "info": {
-    "singularName": "company",
-    "pluralName": "companies",
-    "displayName": "Company"
+    "singularName": "achievement",
+    "pluralName": "achievements",
+    "displayName": "Achievement"
   },
   "options": {
     "draftAndPublish": true
@@ -32,11 +32,6 @@
       },
       "type": "text",
       "required": true
-    },
-    "pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page.page"
     }
   }
 }
