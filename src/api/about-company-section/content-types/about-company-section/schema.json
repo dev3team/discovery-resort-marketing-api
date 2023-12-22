@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-company-section",
     "pluralName": "about-company-sections",
-    "displayName": "AboutCompanySection"
+    "displayName": "AboutCompanySection",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -32,6 +33,11 @@
       },
       "type": "text",
       "required": true
+    },
+    "achievements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::achievement.achievement"
     }
   }
 }

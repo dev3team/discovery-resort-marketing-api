@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_button_call_buttons",
+  "info": {
+    "displayName": "CallButton"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "text"
+    }
+  }
+}

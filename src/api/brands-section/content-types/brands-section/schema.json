@@ -4,7 +4,8 @@
   "info": {
     "singularName": "brands-section",
     "pluralName": "brands-sections",
-    "displayName": "BrandsSection"
+    "displayName": "BrandsSection",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -32,6 +33,11 @@
       },
       "type": "text",
       "required": true
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand.brand"
     }
   }
 }

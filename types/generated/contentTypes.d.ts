@@ -775,6 +775,7 @@ export interface ApiAboutCompanySectionAboutCompanySection
     singularName: 'about-company-section';
     pluralName: 'about-company-sections';
     displayName: 'AboutCompanySection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -799,6 +800,11 @@ export interface ApiAboutCompanySectionAboutCompanySection
           localized: true;
         };
       }>;
+    achievements: Attribute.Relation<
+      'api::about-company-section.about-company-section',
+      'oneToMany',
+      'api::achievement.achievement'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -884,6 +890,7 @@ export interface ApiAchievementAchievement extends Schema.CollectionType {
     singularName: 'achievement';
     pluralName: 'achievements';
     displayName: 'Achievement';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -902,6 +909,13 @@ export interface ApiAchievementAchievement extends Schema.CollectionType {
         };
       }>;
     description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -963,6 +977,20 @@ export interface ApiBrandBrand extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    frontImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    backImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -993,6 +1021,7 @@ export interface ApiBrandsSectionBrandsSection extends Schema.SingleType {
     singularName: 'brands-section';
     pluralName: 'brands-sections';
     displayName: 'BrandsSection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1017,6 +1046,11 @@ export interface ApiBrandsSectionBrandsSection extends Schema.SingleType {
           localized: true;
         };
       }>;
+    brands: Attribute.Relation<
+      'api::brands-section.brands-section',
+      'oneToMany',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1047,6 +1081,7 @@ export interface ApiClientClient extends Schema.CollectionType {
     singularName: 'client';
     pluralName: 'clients';
     displayName: 'Client';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1058,6 +1093,20 @@ export interface ApiClientClient extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locations: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1119,6 +1168,11 @@ export interface ApiClientsSectionClientsSection extends Schema.SingleType {
           localized: true;
         };
       }>;
+    clients: Attribute.Relation<
+      'api::clients-section.clients-section',
+      'oneToMany',
+      'api::client.client'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1204,6 +1258,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     singularName: 'homepage';
     pluralName: 'homepages';
     displayName: 'Homepage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1222,6 +1277,20 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         };
       }>;
     name: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'button.call-button'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
