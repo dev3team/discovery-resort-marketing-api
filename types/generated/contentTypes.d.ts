@@ -573,6 +573,50 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -724,50 +768,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiAboutCompanySectionAboutCompanySection
   extends Schema.SingleType {
   collectionName: 'about_company_sections';
@@ -793,18 +793,24 @@ export interface ApiAboutCompanySectionAboutCompanySection
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    achievements: Attribute.Relation<
+      'api::about-company-section.about-company-section',
+      'oneToMany',
+      'api::achievement.achievement'
+    >;
+    description: Attribute.Blocks &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    achievements: Attribute.Relation<
-      'api::about-company-section.about-company-section',
-      'oneToMany',
-      'api::achievement.achievement'
-    >;
+    desc: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1015,66 +1021,6 @@ export interface ApiBrandBrand extends Schema.CollectionType {
   };
 }
 
-export interface ApiBrandsSectionBrandsSection extends Schema.SingleType {
-  collectionName: 'brands_sections';
-  info: {
-    singularName: 'brands-section';
-    pluralName: 'brands-sections';
-    displayName: 'BrandsSection';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    brands: Attribute.Relation<
-      'api::brands-section.brands-section',
-      'oneToMany',
-      'api::brand.brand'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::brands-section.brands-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::brands-section.brands-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::brands-section.brands-section',
-      'oneToMany',
-      'api::brands-section.brands-section'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiClientClient extends Schema.CollectionType {
   collectionName: 'clients';
   info: {
@@ -1099,15 +1045,14 @@ export interface ApiClientClient extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    locations: Attribute.Text &
+    logo: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    logo: Attribute.Media &
-      Attribute.Required &
+    locations: Attribute.Blocks &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1553,15 +1498,14 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'api::about-company-section.about-company-section': ApiAboutCompanySectionAboutCompanySection;
       'api::aboutpage.aboutpage': ApiAboutpageAboutpage;
       'api::achievement.achievement': ApiAchievementAchievement;
       'api::brand.brand': ApiBrandBrand;
-      'api::brands-section.brands-section': ApiBrandsSectionBrandsSection;
       'api::client.client': ApiClientClient;
       'api::clients-section.clients-section': ApiClientsSectionClientsSection;
       'api::contact.contact': ApiContactContact;

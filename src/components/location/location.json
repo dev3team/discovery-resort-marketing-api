@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_location_locations",
+  "info": {
+    "displayName": "Location",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
