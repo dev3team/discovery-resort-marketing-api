@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "brands",
+  "kind": "singleType",
+  "collectionName": "footers",
   "info": {
-    "singularName": "brand",
-    "pluralName": "brands",
-    "displayName": "Brand",
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
     "description": ""
   },
   "options": {
@@ -16,95 +16,83 @@
     }
   },
   "attributes": {
-    "name": {
-      "type": "text",
+    "logo": {
+      "type": "media",
+      "multiple": false,
       "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
+    },
+    "infoImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "license": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
     },
     "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "required": true
+    },
+    "bottomText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "type": "text",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "required": true
     },
-    "frontImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+    "footer_socials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::footer-social.footer-social"
     },
-    "backImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "detailsButton": {
-      "displayName": "DetailsButton",
-      "type": "component",
-      "repeatable": false,
+    "sitemapTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "button.details-button",
+      "type": "text",
       "required": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "websiteButton": {
-      "displayName": "VisitWebsiteButton",
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "button.visit-website-button",
-      "required": true
+    "sitemap_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sitemap-link.sitemap-link"
     }
   }
 }

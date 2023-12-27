@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_button_details_buttons",
+  "info": {
+    "displayName": "DetailsButton",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

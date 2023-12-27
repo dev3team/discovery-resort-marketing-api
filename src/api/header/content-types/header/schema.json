@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "clients",
+  "kind": "singleType",
+  "collectionName": "headers",
   "info": {
-    "singularName": "client",
-    "pluralName": "clients",
-    "displayName": "Client",
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header",
     "description": ""
   },
   "options": {
@@ -16,14 +16,21 @@
     }
   },
   "attributes": {
-    "name": {
+    "menuIcon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text",
-      "required": true
+      }
     },
     "logo": {
       "type": "media",
@@ -41,13 +48,18 @@
         }
       }
     },
-    "locations": {
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page"
+    },
+    "logoLink": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext",
+      "type": "text",
       "required": true
     }
   }

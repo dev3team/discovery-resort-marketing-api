@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_button_more_buttons",
+  "info": {
+    "displayName": "MoreButton"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

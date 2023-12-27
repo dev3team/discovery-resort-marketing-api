@@ -1,10 +1,10 @@
 {
-  "kind": "singleType",
-  "collectionName": "servicespages",
+  "kind": "collectionType",
+  "collectionName": "sitemap_links",
   "info": {
-    "singularName": "servicespage",
-    "pluralName": "servicespages",
-    "displayName": "Servicespage",
+    "singularName": "sitemap-link",
+    "pluralName": "sitemap-links",
+    "displayName": "SitemapLink",
     "description": ""
   },
   "options": {
@@ -16,23 +16,23 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "name": {
-      "type": "text",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
     }
   }
 }

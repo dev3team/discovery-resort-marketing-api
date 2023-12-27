@@ -786,25 +786,25 @@ export interface ApiAboutCompanySectionAboutCompanySection
     };
   };
   attributes: {
-    title: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     achievements: Attribute.Relation<
       'api::about-company-section.about-company-section',
       'oneToMany',
       'api::achievement.achievement'
     >;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -908,14 +908,14 @@ export interface ApiAchievementAchievement extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    icon: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    icon: Attribute.Media &
+    description: Attribute.RichText &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -991,6 +991,27 @@ export interface ApiBrandBrand extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    detailsButton: Attribute.Component<'button.details-button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    websiteButton: Attribute.Component<'button.visit-website-button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1039,18 +1060,18 @@ export interface ApiBrandsSectionBrandsSection extends Schema.SingleType {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    brands: Attribute.Relation<
+      'api::brands-section.brands-section',
+      'oneToMany',
+      'api::brand.brand'
+    >;
+    description: Attribute.RichText &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    brands: Attribute.Relation<
-      'api::brands-section.brands-section',
-      'oneToMany',
-      'api::brand.brand'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1099,14 +1120,14 @@ export interface ApiClientClient extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    locations: Attribute.Text &
+    logo: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    logo: Attribute.Media &
+    locations: Attribute.RichText &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1154,13 +1175,6 @@ export interface ApiClientsSectionClientsSection extends Schema.SingleType {
     };
   };
   attributes: {
-    title: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     description: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1173,6 +1187,20 @@ export interface ApiClientsSectionClientsSection extends Schema.SingleType {
       'oneToMany',
       'api::client.client'
     >;
+    title: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'button.call-button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1247,6 +1275,290 @@ export interface ApiContactContact extends Schema.SingleType {
       'api::contact.contact',
       'oneToMany',
       'api::contact.contact'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiContactSectionContactSection extends Schema.SingleType {
+  collectionName: 'contact_sections';
+  info: {
+    singularName: 'contact-section';
+    pluralName: 'contact-sections';
+    displayName: 'ContactSection';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'button.call-button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-section.contact-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-section.contact-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-section.contact-section',
+      'oneToMany',
+      'api::contact-section.contact-section'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    logo: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    infoImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    license: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bottomText: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    footer_socials: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::footer-social.footer-social'
+    >;
+    sitemapTitle: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sitemap_links: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::sitemap-link.sitemap-link'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::footer.footer'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFooterSocialFooterSocial extends Schema.CollectionType {
+  collectionName: 'footer_socials';
+  info: {
+    singularName: 'footer-social';
+    pluralName: 'footer-socials';
+    displayName: 'FooterSocial';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer-social.footer-social',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer-social.footer-social',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::footer-social.footer-social',
+      'oneToMany',
+      'api::footer-social.footer-social'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHeaderHeader extends Schema.SingleType {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    menuIcon: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    pages: Attribute.Relation<
+      'api::header.header',
+      'oneToMany',
+      'api::page.page'
+    >;
+    logoLink: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::header.header',
+      'oneToMany',
+      'api::header.header'
     >;
     locale: Attribute.String;
   };
@@ -1345,7 +1657,7 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    title: Attribute.Text &
+    link: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1423,13 +1735,12 @@ export interface ApiServiceService extends Schema.CollectionType {
   };
 }
 
-export interface ApiServicespageServicespage extends Schema.SingleType {
-  collectionName: 'servicespages';
+export interface ApiServicesPageServicesPage extends Schema.SingleType {
+  collectionName: 'services_pages';
   info: {
-    singularName: 'servicespage';
-    pluralName: 'servicespages';
-    displayName: 'Servicespage';
-    description: '';
+    singularName: 'services-page';
+    pluralName: 'services-pages';
+    displayName: 'ServicesPage';
   };
   options: {
     draftAndPublish: true;
@@ -1447,7 +1758,21 @@ export interface ApiServicespageServicespage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    name: Attribute.Text &
+    subtitle: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1458,21 +1783,76 @@ export interface ApiServicespageServicespage extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::servicespage.servicespage',
+      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::servicespage.servicespage',
+      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::servicespage.servicespage',
+      'api::services-page.services-page',
       'oneToMany',
-      'api::servicespage.servicespage'
+      'api::services-page.services-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSitemapLinkSitemapLink extends Schema.CollectionType {
+  collectionName: 'sitemap_links';
+  info: {
+    singularName: 'sitemap-link';
+    pluralName: 'sitemap-links';
+    displayName: 'SitemapLink';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    link: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sitemap-link.sitemap-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sitemap-link.sitemap-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::sitemap-link.sitemap-link',
+      'oneToMany',
+      'api::sitemap-link.sitemap-link'
     >;
     locale: Attribute.String;
   };
@@ -1565,10 +1945,15 @@ declare module '@strapi/types' {
       'api::client.client': ApiClientClient;
       'api::clients-section.clients-section': ApiClientsSectionClientsSection;
       'api::contact.contact': ApiContactContact;
+      'api::contact-section.contact-section': ApiContactSectionContactSection;
+      'api::footer.footer': ApiFooterFooter;
+      'api::footer-social.footer-social': ApiFooterSocialFooterSocial;
+      'api::header.header': ApiHeaderHeader;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::page.page': ApiPagePage;
       'api::service.service': ApiServiceService;
-      'api::servicespage.servicespage': ApiServicespageServicespage;
+      'api::services-page.services-page': ApiServicesPageServicesPage;
+      'api::sitemap-link.sitemap-link': ApiSitemapLinkSitemapLink;
       'api::team.team': ApiTeamTeam;
     }
   }
