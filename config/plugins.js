@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({ env }) => ({
     //
   graphql: {
       config: {
@@ -22,7 +22,7 @@ module.exports = {
         enabled: true,
         config: {
           subject: "Your Custom Subject", 
-          from: 'support@dev-3.com'
+          from: env('FROM_EMAIL')
         }
       },]
     }
@@ -31,19 +31,19 @@ module.exports = {
     config: {
       provider: 'nodemailer',
       providerOptions: {
-        host: "smtp.mailersend.net",
-        port: 587,
+        host: env('SMTP_HOST'),
+        port: env('SMTP_PORT'),
         auth: {
-          user: 'MS_YSGDmT@dev-3.com',
-          pass: 'YuIVbaWVRZibGzha',
+          user: env('SMTP_USER'),
+          pass: env('SMTP_PASSWORD'),
         },
       },
       settings: {
-        defaultFrom: 'support@dev-3.com',
-        defaultReplyTo: 'support@dev-3.com',
+        defaultFrom: env('FROM_EMAIL'),
+        defaultReplyTo: env('FROM_EMAIL'),
       },
     },
   },
-};
+});
 
   
