@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_button_load_more_buttons",
+  "info": {
+    "displayName": "LoadMoreButton"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

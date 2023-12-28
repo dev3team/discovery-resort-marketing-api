@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "services",
+  "collectionName": "employees",
   "info": {
-    "singularName": "service",
-    "pluralName": "services",
-    "displayName": "Service",
-    "description": ""
+    "singularName": "employee",
+    "pluralName": "employees",
+    "displayName": "Employee"
   },
   "options": {
     "draftAndPublish": true
@@ -16,14 +15,23 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "text",
-      "required": true,
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "text",
+      "required": true
+    },
+    "position": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "required": true
     },
     "description": {
       "pluginOptions": {
@@ -34,32 +42,20 @@
       "type": "richtext",
       "required": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
+    "photo": {
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "button": {
-      "displayName": "HireUsButton",
-      "type": "component",
-      "repeatable": false,
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "button.hire-us-button",
       "required": true
     }
   }

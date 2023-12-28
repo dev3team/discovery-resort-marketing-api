@@ -4,7 +4,8 @@
   "info": {
     "singularName": "services-page",
     "pluralName": "services-pages",
-    "displayName": "ServicesPage"
+    "displayName": "ServicesPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -43,20 +44,25 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service"
     }
   }
 }

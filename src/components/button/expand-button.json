@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_button_expand_buttons",
+  "info": {
+    "displayName": "ExpandButton"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

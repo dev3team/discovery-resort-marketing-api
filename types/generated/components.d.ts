@@ -23,6 +23,38 @@ export interface ButtonDetailsButton extends Schema.Component {
   };
 }
 
+export interface ButtonExpandButton extends Schema.Component {
+  collectionName: 'components_button_expand_buttons';
+  info: {
+    displayName: 'ExpandButton';
+  };
+  attributes: {
+    text: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface ButtonHireUsButton extends Schema.Component {
+  collectionName: 'components_button_hire_us_buttons';
+  info: {
+    displayName: 'HireUsButton';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.Text & Attribute.Required;
+    link: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface ButtonLoadMoreButton extends Schema.Component {
+  collectionName: 'components_button_load_more_buttons';
+  info: {
+    displayName: 'LoadMoreButton';
+  };
+  attributes: {
+    text: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface ButtonMoreButton extends Schema.Component {
   collectionName: 'components_button_more_buttons';
   info: {
@@ -50,6 +82,9 @@ declare module '@strapi/types' {
     export interface Components {
       'button.call-button': ButtonCallButton;
       'button.details-button': ButtonDetailsButton;
+      'button.expand-button': ButtonExpandButton;
+      'button.hire-us-button': ButtonHireUsButton;
+      'button.load-more-button': ButtonLoadMoreButton;
       'button.more-button': ButtonMoreButton;
       'button.visit-website-button': ButtonVisitWebsiteButton;
     }

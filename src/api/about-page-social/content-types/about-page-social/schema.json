@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "services",
+  "collectionName": "about_page_socials",
   "info": {
-    "singularName": "service",
-    "pluralName": "services",
-    "displayName": "Service",
+    "singularName": "about-page-social",
+    "pluralName": "about-page-socials",
+    "displayName": "AboutPageSocial",
     "description": ""
   },
   "options": {
@@ -16,50 +16,38 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "description": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext",
+      "type": "text",
       "required": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
+    "link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "logo": {
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "button": {
-      "displayName": "HireUsButton",
-      "type": "component",
-      "repeatable": false,
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "button.hire-us-button",
       "required": true
     }
   }
