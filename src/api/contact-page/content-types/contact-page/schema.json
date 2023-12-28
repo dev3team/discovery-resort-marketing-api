@@ -49,6 +49,21 @@
           "localized": true
         }
       }
+    },
+    "form_inputs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::form-input.form-input"
+    },
+    "SEO": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "seo.seo"
     }
   }
 }

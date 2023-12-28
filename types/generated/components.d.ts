@@ -77,6 +77,29 @@ export interface ButtonVisitWebsiteButton extends Schema.Component {
   };
 }
 
+export interface SeoMeta extends Schema.Component {
+  collectionName: 'components_seo_metas';
+  info: {
+    displayName: 'meta';
+  };
+  attributes: {
+    name: Attribute.String;
+    content: Attribute.String;
+  };
+}
+
+export interface SeoSeo extends Schema.Component {
+  collectionName: 'components_seo_seos';
+  info: {
+    displayName: 'SEO';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    meta: Attribute.Component<'seo.meta', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -87,6 +110,8 @@ declare module '@strapi/types' {
       'button.load-more-button': ButtonLoadMoreButton;
       'button.more-button': ButtonMoreButton;
       'button.visit-website-button': ButtonVisitWebsiteButton;
+      'seo.meta': SeoMeta;
+      'seo.seo': SeoSeo;
     }
   }
 }

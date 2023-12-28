@@ -9,17 +9,20 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-cloud": "4.16.0",
     "@strapi/plugin-graphql": "4.16.0",
     "@strapi/plugin-i18n": "4.16.0",
     "@strapi/plugin-users-permissions": "4.16.0",
+    "@strapi/provider-email-nodemailer": "^4.16.2",
+    "@strapi/provider-email-sendmail": "^4.16.2",
     "@strapi/strapi": "4.16.0",
     "better-sqlite3": "8.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "sendmail": "^1.6.1",
+    "strapi-plugin-ezforms": "^0.1.7",
     "styled-components": "5.3.3"
   },
   "author": {

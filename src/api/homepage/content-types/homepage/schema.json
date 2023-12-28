@@ -61,6 +61,17 @@
       },
       "component": "button.call-button",
       "required": true
+    },
+    "SEO": {
+      "displayName": "SEO",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "seo.seo"
     }
   }
 }

@@ -573,6 +573,110 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginEzformsSubmission extends Schema.CollectionType {
+  collectionName: 'ezforms_submission';
+  info: {
+    tableName: 'submission';
+    singularName: 'submission';
+    pluralName: 'submissions';
+    displayName: 'Form Submissions';
+    description: 'A Place for all your form submissions';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    score: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    formName: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    data: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::ezforms.submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::ezforms.submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginEzformsRecipient extends Schema.CollectionType {
+  collectionName: 'ezforms_recipient';
+  info: {
+    tableName: 'recipients';
+    singularName: 'recipient';
+    pluralName: 'recipients';
+    displayName: 'Notification Recipients';
+    description: 'List of Notification Recipients';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    email: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    number: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::ezforms.recipient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::ezforms.recipient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -835,6 +939,7 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
     singularName: 'about-page';
     pluralName: 'about-pages';
     displayName: 'AboutPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -868,6 +973,12 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
       }>;
     image: Attribute.Media &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    SEO: Attribute.Component<'seo.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1393,6 +1504,17 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    form_inputs: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::form-input.form-input'
+    >;
+    SEO: Attribute.Component<'seo.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1708,6 +1830,7 @@ export interface ApiFormInputFormInput extends Schema.CollectionType {
     singularName: 'form-input';
     pluralName: 'form-inputs';
     displayName: 'FormInput';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1718,14 +1841,37 @@ export interface ApiFormInputFormInput extends Schema.CollectionType {
     };
   };
   attributes: {
-    label: Attribute.Text &
+    label: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    placeholder: Attribute.Text &
+    placeholder: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    validation: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Attribute.Enumeration<
+      ['text', 'email', 'tel', 'password', 'number', 'textarea']
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    required: Attribute.Boolean &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1863,6 +2009,12 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       }>;
     button: Attribute.Component<'button.call-button'> &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    SEO: Attribute.Component<'seo.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2151,6 +2303,12 @@ export interface ApiServicesPageServicesPage extends Schema.SingleType {
       'oneToMany',
       'api::service.service'
     >;
+    SEO: Attribute.Component<'seo.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2297,6 +2455,8 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::ezforms.submission': PluginEzformsSubmission;
+      'plugin::ezforms.recipient': PluginEzformsRecipient;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
