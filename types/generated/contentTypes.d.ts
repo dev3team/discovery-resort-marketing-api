@@ -2165,7 +2165,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    SEO: Attribute.Component<'seo.seo'> &
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

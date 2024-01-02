@@ -1,7 +1,8 @@
 {
   "collectionName": "components_seo_metas",
   "info": {
-    "displayName": "meta"
+    "displayName": "meta",
+    "description": ""
   },
   "options": {},
   "attributes": {
