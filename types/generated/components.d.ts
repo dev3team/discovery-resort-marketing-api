@@ -129,6 +129,7 @@ export interface SharedSeo extends Schema.Component {
   info: {
     displayName: 'seo';
     icon: 'search';
+    description: '';
   };
   attributes: {
     metaTitle: Attribute.String &
@@ -144,11 +145,12 @@ export interface SharedSeo extends Schema.Component {
       }>;
     metaImage: Attribute.Media;
     metaSocial: Attribute.Component<'shared.meta-social', true>;
-    keywords: Attribute.Text;
-    metaRobots: Attribute.String;
+    keywords: Attribute.Text & Attribute.DefaultTo<' '>;
+    metaRobots: Attribute.String & Attribute.DefaultTo<' '>;
     structuredData: Attribute.JSON;
-    metaViewport: Attribute.String;
-    canonicalURL: Attribute.String;
+    metaViewport: Attribute.String &
+      Attribute.DefaultTo<'width=device-width, initial-scale=1'>;
+    canonicalURL: Attribute.String & Attribute.DefaultTo<' '>;
   };
 }
 
