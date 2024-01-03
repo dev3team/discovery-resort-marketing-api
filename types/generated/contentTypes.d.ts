@@ -2466,7 +2466,7 @@ export interface ApiServicesPageServicesPage extends Schema.SingleType {
       'oneToMany',
       'api::service.service'
     >;
-    SEO: Attribute.Component<'seo.seo'> &
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
