@@ -1084,7 +1084,7 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    SEO: Attribute.Component<'seo.seo'> &
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1639,7 +1639,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'oneToMany',
       'api::form-input.form-input'
     >;
-    SEO: Attribute.Component<'seo.seo'> &
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
