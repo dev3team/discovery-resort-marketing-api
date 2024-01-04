@@ -143,13 +143,9 @@ export interface SharedSeo extends Schema.Component {
         minLength: 50;
         maxLength: 160;
       }>;
-    metaImage: Attribute.Media;
-    metaSocial: Attribute.Component<'shared.meta-social', true>;
     keywords: Attribute.Text & Attribute.DefaultTo<' '>;
     metaRobots: Attribute.String & Attribute.DefaultTo<' '>;
     structuredData: Attribute.JSON;
-    metaViewport: Attribute.String &
-      Attribute.DefaultTo<'width=device-width, initial-scale=1'>;
     canonicalURL: Attribute.String & Attribute.DefaultTo<' '>;
   };
 }
