@@ -77,53 +77,6 @@ export interface ButtonVisitWebsiteButton extends Schema.Component {
   };
 }
 
-export interface SeoMeta extends Schema.Component {
-  collectionName: 'components_seo_metas';
-  info: {
-    displayName: 'meta';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String;
-    content: Attribute.String;
-  };
-}
-
-export interface SeoSeo extends Schema.Component {
-  collectionName: 'components_seo_seos';
-  info: {
-    displayName: 'SEO';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
-export interface SharedMetaSocial extends Schema.Component {
-  collectionName: 'components_shared_meta_socials';
-  info: {
-    displayName: 'metaSocial';
-    icon: 'project-diagram';
-  };
-  attributes: {
-    socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
-      Attribute.Required;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    description: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 65;
-      }>;
-    image: Attribute.Media;
-  };
-}
-
 export interface SharedSeo extends Schema.Component {
   collectionName: 'components_shared_seos';
   info: {
@@ -145,7 +98,6 @@ export interface SharedSeo extends Schema.Component {
       }>;
     keywords: Attribute.Text & Attribute.DefaultTo<' '>;
     metaRobots: Attribute.String & Attribute.DefaultTo<' '>;
-    structuredData: Attribute.JSON;
     canonicalURL: Attribute.String & Attribute.DefaultTo<' '>;
   };
 }
@@ -160,9 +112,6 @@ declare module '@strapi/types' {
       'button.load-more-button': ButtonLoadMoreButton;
       'button.more-button': ButtonMoreButton;
       'button.visit-website-button': ButtonVisitWebsiteButton;
-      'seo.meta': SeoMeta;
-      'seo.seo': SeoSeo;
-      'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
   }

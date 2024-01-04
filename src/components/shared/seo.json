@@ -28,9 +28,6 @@
       "regex": "[^,]+",
       "default": " "
     },
-    "structuredData": {
-      "type": "json"
-    },
     "canonicalURL": {
       "type": "string",
       "default": " "
