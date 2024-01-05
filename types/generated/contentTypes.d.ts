@@ -1634,11 +1634,6 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    form_inputs: Attribute.Relation<
-      'api::contact-page.contact-page',
-      'oneToMany',
-      'api::form-input.form-input'
-    >;
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1961,87 +1956,6 @@ export interface ApiFooterSocialFooterSocial extends Schema.CollectionType {
       'api::footer-social.footer-social',
       'oneToMany',
       'api::footer-social.footer-social'
-    >;
-    locale: Attribute.String;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
-export interface ApiFormInputFormInput extends Schema.CollectionType {
-  collectionName: 'form_inputs';
-  info: {
-    singularName: 'form-input';
-    pluralName: 'form-inputs';
-    displayName: 'FormInput';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    label: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    placeholder: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    validation: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    type: Attribute.Enumeration<
-      ['text', 'email', 'tel', 'password', 'number', 'textarea']
-    > &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    required: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::form-input.form-input',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::form-input.form-input',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::form-input.form-input',
-      'oneToMany',
-      'api::form-input.form-input'
     >;
     locale: Attribute.String;
     sitemap_exclude: Attribute.Boolean &
@@ -2777,7 +2691,6 @@ declare module '@strapi/types' {
       'api::employee.employee': ApiEmployeeEmployee;
       'api::footer.footer': ApiFooterFooter;
       'api::footer-social.footer-social': ApiFooterSocialFooterSocial;
-      'api::form-input.form-input': ApiFormInputFormInput;
       'api::header.header': ApiHeaderHeader;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::marketing-section.marketing-section': ApiMarketingSectionMarketingSection;

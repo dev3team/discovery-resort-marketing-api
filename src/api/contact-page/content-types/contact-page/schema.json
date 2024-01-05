@@ -50,11 +50,6 @@
         }
       }
     },
-    "form_inputs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::form-input.form-input"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
