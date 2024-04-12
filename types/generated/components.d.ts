@@ -45,6 +45,18 @@ export interface ButtonHireUsButton extends Schema.Component {
   };
 }
 
+export interface ButtonLinkedInBtn extends Schema.Component {
+  collectionName: 'components_button_linked_in_btns';
+  info: {
+    displayName: 'LinkedInButton';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface ButtonLoadMoreButton extends Schema.Component {
   collectionName: 'components_button_load_more_buttons';
   info: {
@@ -109,6 +121,7 @@ declare module '@strapi/types' {
       'button.details-button': ButtonDetailsButton;
       'button.expand-button': ButtonExpandButton;
       'button.hire-us-button': ButtonHireUsButton;
+      'button.linked-in-btn': ButtonLinkedInBtn;
       'button.load-more-button': ButtonLoadMoreButton;
       'button.more-button': ButtonMoreButton;
       'button.visit-website-button': ButtonVisitWebsiteButton;

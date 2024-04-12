@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "employees",
+  "collectionName": "posts",
   "info": {
-    "singularName": "employee",
-    "pluralName": "employees",
-    "displayName": "Employee",
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
     "description": ""
   },
   "options": {
@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "name": {
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -25,7 +25,17 @@
       "type": "text",
       "required": true
     },
-    "position": {
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "post_content": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -34,32 +44,7 @@
       "type": "richtext",
       "required": true
     },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
-    },
-    "photo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "linkedIn": {
+    "read_more_btn": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -67,22 +52,16 @@
           "localized": true
         }
       },
-      "component": "button.linked-in-btn"
+      "component": "button.more-button"
     },
-    "linkedInIcon": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false,
+    "display": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }
