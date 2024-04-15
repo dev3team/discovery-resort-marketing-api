@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_button_linked_in_buttons",
+  "info": {
+    "displayName": "LinkedInButton"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
